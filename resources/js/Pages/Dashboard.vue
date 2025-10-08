@@ -19,10 +19,10 @@ const props = defineProps({
       <!-- Header -->
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="text-3xl font-bold leading-7 bg-gradient-to-r from-yara-blue via-yara-mid-blue to-yara-bright-blue bg-clip-text text-transparent sm:text-4xl sm:truncate">
+          <h2 class="text-3xl font-bold leading-7 text-gray-900 sm:text-4xl sm:truncate">
             Dashboard
           </h2>
-          <p class="mt-1 text-sm text-yara-mid-blue">Willkommen zurück! Hier ist eine Übersicht Ihrer Ausrüstung.</p>
+          <p class="mt-1 text-sm font-medium text-gray-600">Willkommen zurück! Hier ist eine Übersicht Ihrer Ausrüstung.</p>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4">
           <Link
@@ -54,20 +54,20 @@ const props = defineProps({
                 </div>
                 <div class="ml-5 w-0 flex-1">
                   <dl>
-                    <dt class="text-sm font-medium text-yara-mid-blue truncate">
+                    <dt class="text-sm font-semibold text-gray-700 truncate">
                       Gesamt Equipment
                     </dt>
-                    <dd class="text-2xl font-bold text-yara-blue">
+                    <dd class="text-3xl font-bold text-gray-900">
                       {{ stats.total_equipment }}
                     </dd>
                   </dl>
                 </div>
               </div>
-              <svg class="w-5 h-5 text-yara-mid-blue opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <div class="mt-2 text-xs text-yara-mid-blue opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="mt-2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
               Alle Equipment anzeigen →
             </div>
           </div>
@@ -88,20 +88,20 @@ const props = defineProps({
                 </div>
                 <div class="ml-5 w-0 flex-1">
                   <dl>
-                    <dt class="text-sm font-medium text-green-700 truncate">
+                    <dt class="text-sm font-semibold text-gray-700 truncate">
                       Verfügbar
                     </dt>
-                    <dd class="text-2xl font-bold text-yara-dark-green">
+                    <dd class="text-3xl font-bold text-green-700">
                       {{ stats.available }}
                     </dd>
                   </dl>
                 </div>
               </div>
-              <svg class="w-5 h-5 text-green-700 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <div class="mt-2 text-xs text-green-700 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="mt-2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
               Verfügbares Equipment →
             </div>
           </div>
@@ -122,20 +122,20 @@ const props = defineProps({
                 </div>
                 <div class="ml-5 w-0 flex-1">
                   <dl>
-                    <dt class="text-sm font-medium text-blue-700 truncate">
+                    <dt class="text-sm font-semibold text-gray-700 truncate">
                       In Verwendung
                     </dt>
-                    <dd class="text-2xl font-bold text-yara-mid-blue">
+                    <dd class="text-3xl font-bold text-blue-700">
                       {{ stats.in_use }}
                     </dd>
                   </dl>
                 </div>
               </div>
-              <svg class="w-5 h-5 text-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <div class="mt-2 text-xs text-blue-700 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="mt-2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
               Equipment in Verwendung →
             </div>
           </div>
@@ -157,20 +157,20 @@ const props = defineProps({
                 </div>
                 <div class="ml-5 w-0 flex-1">
                   <dl>
-                    <dt class="text-sm font-medium text-orange-700 truncate">
+                    <dt class="text-sm font-semibold text-gray-700 truncate">
                       Wartung
                     </dt>
-                    <dd class="text-2xl font-bold text-yara-orange">
+                    <dd class="text-3xl font-bold text-orange-600">
                       {{ stats.maintenance }}
                     </dd>
                   </dl>
                 </div>
               </div>
-              <svg class="w-5 h-5 text-orange-700 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <div class="mt-2 text-xs text-orange-700 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="mt-2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
               Equipment in Wartung →
             </div>
           </div>
@@ -180,8 +180,8 @@ const props = defineProps({
       <!-- Categories -->
       <div v-if="categories && categories.length > 0" class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
         <div class="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-white">
-          <h3 class="text-lg font-bold text-yara-blue flex items-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <h3 class="text-lg font-bold text-gray-900 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-yara-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
             </svg>
             Kategorien
@@ -198,7 +198,7 @@ const props = defineProps({
               <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-yara-bright-blue to-transparent opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity"></div>
               <div class="text-4xl mb-2">{{ category.icon }}</div>
               <div class="font-bold text-gray-900 text-sm">{{ category.name }}</div>
-              <div class="text-xs text-yara-mid-blue mt-1">{{ category.equipment_count }} Einträge</div>
+              <div class="text-xs font-medium text-gray-600 mt-1">{{ category.equipment_count }} Einträge</div>
             </Link>
           </div>
         </div>
@@ -207,8 +207,8 @@ const props = defineProps({
       <!-- Recent Equipment -->
       <div v-if="recentEquipment && recentEquipment.length > 0" class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
         <div class="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-white">
-          <h3 class="text-lg font-bold text-yara-blue flex items-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <h3 class="text-lg font-bold text-gray-900 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-yara-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Zuletzt hinzugefügt
@@ -229,8 +229,8 @@ const props = defineProps({
                   </div>
                 </div>
                 <div class="ml-4 flex-1">
-                  <div class="font-medium text-gray-900">{{ equipment.name }}</div>
-                  <div class="text-sm text-gray-500">{{ equipment.equipment_number }}</div>
+                  <div class="font-semibold text-gray-900">{{ equipment.name }}</div>
+                  <div class="text-sm font-medium text-gray-600">{{ equipment.equipment_number }}</div>
                 </div>
               </div>
               <div class="flex items-center space-x-3">
