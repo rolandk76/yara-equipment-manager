@@ -61,7 +61,7 @@ const getStatusLabel = (status) => {
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4">
           <Link
-            :href="route('equipment.create')"
+            href="/equipment/create"
             class="ml-3 inline-flex items-center px-6 py-3 border border-transparent rounded-lg shadow-lg text-sm font-bold text-white bg-gradient-to-r from-yara-mid-blue to-yara-bright-blue hover:from-yara-blue hover:to-yara-mid-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transform hover:scale-105 transition-all duration-200"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +141,7 @@ const getStatusLabel = (status) => {
           <Link
             v-for="item in equipment.data"
             :key="item.id"
-            :href="route('equipment.show', item.id)"
+            :href="`/equipment/${item.id}`"
             class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow p-6"
           >
             <div class="flex items-start justify-between mb-4">
@@ -188,17 +188,22 @@ const getStatusLabel = (status) => {
         <!-- Pagination -->
         <div v-if="equipment.data.length > 0" class="mt-8 flex justify-center">
           <nav class="flex items-center space-x-2">
-            <Link
-              v-for="link in equipment.links"
-              :key="link.label"
-              :href="link.url"
-              :class="[
-                'px-4 py-2 rounded-lg',
-                link.active ? 'bg-[#2777b8] text-white' : 'bg-white text-gray-700 hover:bg-gray-100',
-                !link.url ? 'opacity-50 cursor-not-allowed' : '',
-              ]"
-              v-html="link.label"
-            />
+            <template v-for="link in equipment.links" :key="link.label">
+              <span
+                v-if="!link.url"
+                class="px-4 py-2 rounded-lg opacity-50 cursor-not-allowed"
+                v-html="link.label"
+              />
+              <Link
+                v-else
+                :href="link.url"
+                :class="[
+                  'px-4 py-2 rounded-lg',
+                  link.active ? 'bg-[#2777b8] text-white' : 'bg-white text-gray-700 hover:bg-gray-100',
+                ]"
+                v-html="link.label"
+              />
+            </template>
           </nav>
         </div>
       </div>
