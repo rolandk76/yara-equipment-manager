@@ -42,7 +42,7 @@ const getStatusLabel = (status) => {
     maintenance: 'Wartung',
     retired: 'Ausgemustert',
   };
-  return labels[status] || status;
+  return labels[status] || status || 'Unbekannt';
 };
 </script>
 
@@ -76,19 +76,19 @@ const getStatusLabel = (status) => {
         <!-- Stats -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div class="bg-white rounded-lg shadow p-6">
-            <div class="text-3xl font-bold text-gray-900">{{ stats.total }}</div>
+            <div class="text-3xl font-bold text-gray-900">{{ stats?.total || 0 }}</div>
             <div class="text-gray-600">Gesamt</div>
           </div>
           <div class="bg-white rounded-lg shadow p-6">
-            <div class="text-3xl font-bold text-green-600">{{ stats.available }}</div>
+            <div class="text-3xl font-bold text-green-600">{{ stats?.available || 0 }}</div>
             <div class="text-gray-600">Verfügbar</div>
           </div>
           <div class="bg-white rounded-lg shadow p-6">
-            <div class="text-3xl font-bold text-blue-600">{{ stats.in_use }}</div>
+            <div class="text-3xl font-bold text-blue-600">{{ stats?.in_use || 0 }}</div>
             <div class="text-gray-600">In Verwendung</div>
           </div>
           <div class="bg-white rounded-lg shadow p-6">
-            <div class="text-3xl font-bold text-orange-600">{{ stats.maintenance }}</div>
+            <div class="text-3xl font-bold text-orange-600">{{ stats?.maintenance || 0 }}</div>
             <div class="text-gray-600">Wartung</div>
           </div>
         </div>
@@ -129,7 +129,7 @@ const getStatusLabel = (status) => {
               >
                 <option value="">Alle Kategorien</option>
                 <option v-for="category in categories" :key="category.id" :value="category.id">
-                  {{ category.icon }} {{ category.name }}
+                  {{ category.icon || '📦' }} {{ category.name || 'Unbekannt' }}
                 </option>
               </select>
             </div>
@@ -145,13 +145,13 @@ const getStatusLabel = (status) => {
             class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow p-6"
           >
             <div class="flex items-start justify-between mb-4">
-              <div class="text-3xl">{{ item.category.icon }}</div>
+              <div class="text-3xl">{{ item.category?.icon || '📦' }}</div>
               <span :class="['px-3 py-1 rounded-full text-xs font-semibold', getStatusColor(item.status)]">
                 {{ getStatusLabel(item.status) }}
               </span>
             </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ item.name }}</h3>
-            <p class="text-sm text-gray-600 mb-2">{{ item.equipment_number }}</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ item.name || 'Unbekannt' }}</h3>
+            <p class="text-sm text-gray-600 mb-2">{{ item.equipment_number || 'N/A' }}</p>
             <div class="text-sm text-gray-500 space-y-1">
               <div v-if="item.manufacturer">
                 <span class="font-medium">Hersteller:</span> {{ item.manufacturer }}
@@ -163,7 +163,7 @@ const getStatusLabel = (status) => {
                 <span class="font-medium">Standort:</span> {{ item.location }}
               </div>
               <div v-if="item.assigned_user">
-                <span class="font-medium">Zugewiesen:</span> {{ item.assigned_user.name }}
+                <span class="font-medium">Zugewiesen:</span> {{ item.assigned_user?.name || 'Unbekannt' }}
               </div>
             </div>
           </Link>
