@@ -29,16 +29,16 @@
             <div class="flex-shrink-0 flex items-center">
               <Link href="/dashboard" class="flex items-center space-x-2 sm:space-x-3 group">
                 <!-- Yara Logo Icon -->
-                <div class="relative w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-yara-blue via-yara-mid-blue to-yara-bright-blue rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+                <div class="relative w-9 h-9 sm:w-10 sm:h-10 bg-yara-blue rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
                   <!-- Glow effect -->
-                  <div class="absolute inset-0 bg-gradient-to-br from-yara-bright-blue to-transparent opacity-0 group-hover:opacity-30 rounded-lg transition-opacity duration-300"></div>
-                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  <div class="absolute inset-0 bg-yara-bright-blue opacity-0 group-hover:opacity-20 rounded-lg transition-opacity duration-300"></div>
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                   </svg>
                 </div>
                 <div class="hidden sm:block">
-                  <div class="text-lg font-bold bg-gradient-to-r from-yara-blue to-yara-mid-blue bg-clip-text text-transparent leading-tight">Yara Equipment</div>
-                  <div class="text-xs text-yara-mid-blue leading-tight">Equipment-Management</div>
+                  <div class="text-lg font-bold text-gray-900 leading-tight">Yara Equipment</div>
+                  <div class="text-xs font-medium text-gray-600 leading-tight">Equipment-Management</div>
                 </div>
               </Link>
             </div>

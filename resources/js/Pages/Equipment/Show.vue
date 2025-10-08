@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
@@ -57,37 +57,48 @@ const deleteEquipment = () => {
 <template>
   <Head :title="equipment.name" />
 
-  <AuthenticatedLayout>
-    <template #header>
-      <div class="flex justify-between items-center">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-          Equipment Details
-        </h2>
-        <div class="flex space-x-2">
+  <AppLayout>
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="flex-1 min-w-0">
+          <h2 class="text-3xl font-bold leading-7 text-gray-900 sm:text-4xl sm:truncate">
+            {{ equipment.name }}
+          </h2>
+          <p class="mt-1 text-sm font-medium text-gray-600">Equipment-Nummer: {{ equipment.equipment_number }}</p>
+        </div>
+        <div class="mt-4 flex space-x-3 md:mt-0 md:ml-4">
           <Link
             :href="route('equipment.edit', equipment.id)"
-            class="px-4 py-2 bg-[#2777b8] text-white rounded-lg hover:bg-[#00205b] transition-colors"
+            class="inline-flex items-center px-6 py-3 border border-transparent rounded-lg shadow-lg text-sm font-bold text-white bg-gradient-to-r from-yara-mid-blue to-yara-bright-blue hover:from-yara-blue hover:to-yara-mid-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transform hover:scale-105 transition-all duration-200"
           >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
             Bearbeiten
           </Link>
           <button
             @click="deleteEquipment"
-            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            class="inline-flex items-center px-6 py-3 border border-transparent rounded-lg shadow-lg text-sm font-bold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transform hover:scale-105 transition-all duration-200"
           >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
             Löschen
           </button>
           <Link
             :href="route('equipment.index')"
-            class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transition-all duration-200"
           >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
             Zurück
           </Link>
         </div>
       </div>
-    </template>
 
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 space-y-6">
+      <div class="space-y-6">
         <!-- Header Card -->
         <div class="bg-white rounded-lg shadow p-8">
           <div class="flex items-start justify-between">
@@ -224,6 +235,6 @@ const deleteEquipment = () => {
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AppLayout>
 </template>
 

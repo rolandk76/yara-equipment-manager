@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -34,23 +34,30 @@ const submit = () => {
 <template>
   <Head title="Neues Equipment" />
 
-  <AuthenticatedLayout>
-    <template #header>
-      <div class="flex justify-between items-center">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-          Neues Equipment erstellen
-        </h2>
-        <Link
-          :href="route('equipment.index')"
-          class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
-        >
-          Abbrechen
-        </Link>
+  <AppLayout>
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="flex-1 min-w-0">
+          <h2 class="text-3xl font-bold leading-7 text-gray-900 sm:text-4xl sm:truncate">
+            Neues Equipment erstellen
+          </h2>
+          <p class="mt-1 text-sm font-medium text-gray-600">Fügen Sie ein neues Equipment hinzu.</p>
+        </div>
+        <div class="mt-4 flex md:mt-0 md:ml-4">
+          <Link
+            :href="route('equipment.index')"
+            class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transition-all duration-200"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Zurück
+          </Link>
+        </div>
       </div>
-    </template>
 
-    <div class="py-12">
-      <div class="mx-auto max-w-4xl sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
         <div class="bg-white rounded-lg shadow p-8">
           <form @submit.prevent="submit" class="space-y-6">
             <!-- Kategorie & Status -->
@@ -287,6 +294,6 @@ const submit = () => {
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AppLayout>
 </template>
 
