@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('maintenance_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
-            $table->foreignId('performed_by')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('performed_by'); // User ID from shared database
             $table->enum('type', ['routine', 'repair', 'inspection', 'calibration'])->default('routine');
             $table->date('maintenance_date');
             $table->text('description');

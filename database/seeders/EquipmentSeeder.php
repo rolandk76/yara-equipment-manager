@@ -60,8 +60,8 @@ class EquipmentSeeder extends Seeder
             Category::create($categoryData);
         }
 
-        // Get admin user
-        $admin = User::where('email', 'admin@yara.com')->first();
+        // Get admin user from shared database
+        $admin = User::on('shared')->where('email', 'admin@yara.com')->first();
 
         // Create Equipment
         $werkzeuge = Category::where('slug', 'werkzeuge')->first();

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('purchase_price', 10, 2)->nullable();
             $table->enum('status', ['available', 'in_use', 'maintenance', 'retired'])->default('available');
             $table->string('location')->nullable();
-            $table->foreignId('assigned_to')->nullable()->constrained('users')->onDelete('set null');
+            $table->unsignedBigInteger('assigned_to')->nullable(); // User ID from shared database
             $table->date('next_maintenance_date')->nullable();
             $table->integer('maintenance_interval_days')->nullable();
             $table->text('notes')->nullable();

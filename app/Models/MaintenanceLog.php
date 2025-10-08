@@ -34,7 +34,8 @@ class MaintenanceLog extends Model
 
     public function performedBy(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'performed_by');
+        return $this->setConnection('shared')
+            ->belongsTo(User::class, 'performed_by');
     }
 
     public function getTypeLabelAttribute(): string
