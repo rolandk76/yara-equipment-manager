@@ -49,7 +49,7 @@ const formatCurrency = (amount) => {
 
 const deleteEquipment = () => {
   if (confirm('Möchten Sie dieses Equipment wirklich löschen?')) {
-    router.delete(route('equipment.destroy', props.equipment.id));
+    router.delete(`/equipment/${props.equipment.id}`);
   }
 };
 </script>
@@ -69,7 +69,7 @@ const deleteEquipment = () => {
         </div>
         <div class="mt-4 flex space-x-3 md:mt-0 md:ml-4">
           <Link
-            :href="route('equipment.edit', equipment.id)"
+            :href="`/equipment/${equipment.id}/edit`"
             class="inline-flex items-center px-6 py-3 border border-transparent rounded-lg shadow-lg text-sm font-bold text-white bg-gradient-to-r from-yara-mid-blue to-yara-bright-blue hover:from-yara-blue hover:to-yara-mid-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transform hover:scale-105 transition-all duration-200"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@ const deleteEquipment = () => {
             Löschen
           </button>
           <Link
-            :href="route('equipment.index')"
+            href="/equipment"
             class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yara-bright-blue transition-all duration-200"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
