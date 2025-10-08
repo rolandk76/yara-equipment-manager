@@ -196,9 +196,9 @@ const props = defineProps({
               class="group relative bg-gradient-to-br from-white to-blue-50 rounded-lg p-4 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 border border-gray-100 cursor-pointer"
             >
               <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-yara-bright-blue to-transparent opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity"></div>
-              <div class="text-4xl mb-2">{{ category.icon }}</div>
-              <div class="font-bold text-gray-900 text-sm">{{ category.name }}</div>
-              <div class="text-xs font-medium text-gray-600 mt-1">{{ category.equipment_count }} Einträge</div>
+              <div class="text-4xl mb-2">{{ category.icon || '📦' }}</div>
+              <div class="font-bold text-gray-900 text-sm">{{ category.name || 'Unbekannt' }}</div>
+              <div class="text-xs font-medium text-gray-600 mt-1">{{ category.equipment_count || 0 }} Einträge</div>
             </Link>
           </div>
         </div>
@@ -229,8 +229,8 @@ const props = defineProps({
                   </div>
                 </div>
                 <div class="ml-4 flex-1">
-                  <div class="font-semibold text-gray-900">{{ equipment.name }}</div>
-                  <div class="text-sm font-medium text-gray-600">{{ equipment.equipment_number }}</div>
+                  <div class="font-semibold text-gray-900">{{ equipment.name || 'Unbekannt' }}</div>
+                  <div class="text-sm font-medium text-gray-600">{{ equipment.equipment_number || 'N/A' }}</div>
                 </div>
               </div>
               <div class="flex items-center space-x-3">
