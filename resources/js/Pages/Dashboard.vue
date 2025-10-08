@@ -58,7 +58,7 @@ const props = defineProps({
                       Gesamt Equipment
                     </dt>
                     <dd class="text-3xl font-bold text-gray-900">
-                      {{ stats.total_equipment }}
+                      {{ stats?.total_equipment || 0 }}
                     </dd>
                   </dl>
                 </div>
@@ -92,7 +92,7 @@ const props = defineProps({
                       Verfügbar
                     </dt>
                     <dd class="text-3xl font-bold text-green-700">
-                      {{ stats.available }}
+                      {{ stats?.available || 0 }}
                     </dd>
                   </dl>
                 </div>
@@ -126,7 +126,7 @@ const props = defineProps({
                       In Verwendung
                     </dt>
                     <dd class="text-3xl font-bold text-blue-700">
-                      {{ stats.in_use }}
+                      {{ stats?.in_use || 0 }}
                     </dd>
                   </dl>
                 </div>
@@ -161,7 +161,7 @@ const props = defineProps({
                       Wartung
                     </dt>
                     <dd class="text-3xl font-bold text-orange-600">
-                      {{ stats.maintenance }}
+                      {{ stats?.maintenance || 0 }}
                     </dd>
                   </dl>
                 </div>
@@ -246,7 +246,7 @@ const props = defineProps({
                   {{ equipment.status === 'available' ? 'Verfügbar' :
                      equipment.status === 'in_use' ? 'In Verwendung' :
                      equipment.status === 'maintenance' ? 'Wartung' :
-                     equipment.status }}
+                     equipment.status || 'Unbekannt' }}
                 </span>
                 <svg class="w-5 h-5 text-gray-400 group-hover:text-yara-mid-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
