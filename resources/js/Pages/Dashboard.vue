@@ -1,10 +1,13 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
 const props = defineProps({
   user: Object,
   stats: Object,
+  categories: Array,
+  recentEquipment: Array,
+  upcomingMaintenance: Array,
 });
 
 const portalUrl = computed(() => {
@@ -54,38 +57,60 @@ const portalUrl = computed(() => {
         </div>
       </div>
 
-      <!-- Info Box -->
-      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          🎉 Equipment Manager ist bereit!
+      <!-- Quick Actions -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          Schnellzugriff
         </h2>
-        <p class="text-gray-600 mb-4">
-          Dies ist eine Demo-Ansicht des Equipment Managers. Die App ist erfolgreich ins Multi-App-System integriert.
-        </p>
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
-          <p class="text-blue-700">
-            <strong>Multi-App Features:</strong>
-          </p>
-          <ul class="list-disc list-inside text-blue-600 mt-2">
-            <li>Gemeinsame User-Datenbank</li>
-            <li>App-spezifische Rollen</li>
-            <li>Zugriffskontrolle</li>
-            <li>SSO-Ready (Production)</li>
-          </ul>
-        </div>
-
-        <!-- Back to Portal -->
-        <div class="text-center mt-6">
-          <a
-            :href="portalUrl"
-            class="inline-flex items-center px-6 py-3 bg-[#2777b8] text-white rounded-lg hover:bg-[#00205b] transition-colors"
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Link
+            :href="route('equipment.index')"
+            class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
           >
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Zurück zum Portal
-          </a>
+            <div class="text-3xl mr-4">📦</div>
+            <div>
+              <div class="font-bold text-gray-900">Equipment anzeigen</div>
+              <div class="text-sm text-gray-600">Alle Equipment-Einträge verwalten</div>
+            </div>
+          </Link>
+          <Link
+            :href="route('equipment.create')"
+            class="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+          >
+            <div class="text-3xl mr-4">➕</div>
+            <div>
+              <div class="font-bold text-gray-900">Neues Equipment</div>
+              <div class="text-sm text-gray-600">Equipment hinzufügen</div>
+            </div>
+          </Link>
         </div>
+      </div>
+
+      <!-- Categories -->
+      <div v-if="categories && categories.length > 0" class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          Kategorien
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div v-for="category in categories" :key="category.id" class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-4xl mb-2">{{ category.icon }}</div>
+            <div class="font-bold text-gray-900">{{ category.name }}</div>
+            <div class="text-sm text-gray-600">{{ category.equipment_count }} Einträge</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Portal -->
+      <div class="text-center">
+        <a
+          :href="portalUrl"
+          class="inline-flex items-center px-6 py-3 bg-[#2777b8] text-white rounded-lg hover:bg-[#00205b] transition-colors"
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Zurück zum Portal
+        </a>
       </div>
 
       <!-- User Menu -->
