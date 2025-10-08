@@ -15,6 +15,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'yara-blue': '#00205b',           // PANTONE 281 - Hauptfarbe
+                'yara-mid-blue': '#2777b8',       // PANTONE 646 - Mittleres Blau
+                'yara-bright-blue': '#63b6e6',    // PANTONE 292 - Helles Blau
+                'yara-orange': '#ff8228',         // PANTONE 151 - Orange Akzent
+                'yara-dark-green': '#006341',     // Dunkelgrün
+                'yara-yellow': '#ffcf01',         // Gelb
+                'yara-pale-blue-gray': '#e8f1f5', // Helles Blaugrau für Hintergründe
+            },
         },
     },
 
