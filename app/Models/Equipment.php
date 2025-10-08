@@ -44,8 +44,7 @@ class Equipment extends Model
 
     public function assignedUser(): BelongsTo
     {
-        return $this->setConnection('shared')
-            ->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     public function maintenanceLogs(): HasMany

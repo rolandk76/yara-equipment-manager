@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yara-pale-blue-gray">
     <!-- Navigation -->
-    <nav class="bg-white border-b-2 border-yara-bright-blue shadow-lg relative overflow-hidden">
+    <nav class="bg-white border-b-2 border-yara-bright-blue shadow-lg relative">
       <!-- Decorative gradient bar -->
       <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yara-blue via-yara-mid-blue to-yara-bright-blue"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,7 +90,7 @@
             </a>
 
             <!-- User Dropdown -->
-            <div class="relative">
+            <div class="relative user-menu-container">
               <button
                 @click="showUserMenu = !showUserMenu"
                 class="flex items-center space-x-2 text-sm focus:outline-none focus:ring-2 focus:ring-yara-bright-blue rounded-lg p-2 hover:bg-blue-50 transition-colors"
@@ -107,7 +107,7 @@
               <!-- Dropdown Menu -->
               <div
                 v-show="showUserMenu"
-                @click.away="showUserMenu = false"
+
                 class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-1 z-50 border border-gray-100"
               >
                 <div class="px-4 py-2 border-b border-gray-100">
@@ -123,18 +123,17 @@
                   </svg>
                   Profil
                 </Link>
-                <form method="POST" action="/logout">
-                  <input type="hidden" name="_token" :value="$page.props.csrf_token">
-                  <button
-                    type="submit"
-                    class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                  >
-                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                    Abmelden
-                  </button>
-                </form>
+                <Link
+                  href="/logout"
+                  method="post"
+                  as="button"
+                  class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                >
+                  <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  Abmelden
+                </Link>
               </div>
             </div>
           </div>
@@ -201,13 +200,28 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const showMobileMenu = ref(false);
 const showUserMenu = ref(false);
 
 const portalUrl = computed(() => {
   return import.meta.env.VITE_PORTAL_URL || 'http://localhost:8001/portal';
+});
+
+const handleClickOutside = (event) => {
+  const within = event.target.closest('.user-menu-container');
+  if (!within && showUserMenu.value) {
+    showUserMenu.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
