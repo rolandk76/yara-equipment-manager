@@ -43,17 +43,6 @@ return [
             'transaction_mode' => 'DEFERRED',
         ],
 
-        'shared' => [
-            'driver' => 'sqlite',
-            'url' => env('SHARED_DB_URL'),
-            'database' => env('SHARED_DB_DATABASE', base_path('../shared-database/database/shared.sqlite')),
-            'prefix' => '',
-            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-            'busy_timeout' => null,
-            'journal_mode' => null,
-            'synchronous' => null,
-            'transaction_mode' => 'DEFERRED',
-        ],
 
         'mysql' => [
             'driver' => 'mysql',
