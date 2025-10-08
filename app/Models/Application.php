@@ -10,12 +10,6 @@ use Spatie\Permission\Models\Role;
 
 class Application extends Model
 {
-    /**
-     * The database connection that should be used by the model.
-     *
-     * @var string
-     */
-    protected $connection = 'shared';
 
     protected $fillable = [
         'name',
